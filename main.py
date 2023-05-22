@@ -7,7 +7,9 @@ from src.database import *
 def sign():
     private_key = None
     # dapatin kunci
-    while(private_key == None):
+    haskey = 'uwu'
+    while(private_key == None and haskey != 'keluar'):
+        print("ketik keluar untuk keluar dari menu")
         print("apakah kamu punya kunci, nya? (y/n): ", end='')
         haskey = input()
 
@@ -21,7 +23,6 @@ def sign():
 
             encrypted = encrypt(private_key, int(hashed_content, 16))
             saveSignFile(hex(encrypted))
-            print(hashed_content)
 
 def verify():
       public_key = None
@@ -58,13 +59,19 @@ def generatekey():
             savePrivateKey(private_key)
 
 command = "ulang"
-print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
-print("Selamat datang di sisteeeemm DIGISIGN GENSHI DESUUUUU~~~")
-while command != 'stop':
-    print("")
+print("Selamat datang di sisteeeemm\n ~~~DIGISIGN GENSHI DESUUUUU~~~\n")
+while command != 'keluar':
+    print("Masukkan Command yang anda ingingkan!!\n")
+    print("> sign -> melakukan sign pada dokumen, nyaa~")
+    print("> verify -> memastikan kebenaran dokumen, nyaa~")
+    print("> keluar -> keluar dari sistem, nyaa~")
+    print("\n> ", end='')
+    command = input()
     if(command == 'sign'):
         sign()
     elif(command == 'verify'):
         verify()
+    elif(command == 'keluar'):
+         print("Bye byee~~")
     else:
          print("masukan anda salah, nyaa~.\n masukan yang bener dong!!")
